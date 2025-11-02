@@ -1,0 +1,28 @@
+/* Fait en sorte que l'image remplisse la zone, centrée sans déformation */
+.card-illu .ratio > .img-fill {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* montre toute l’image (pas de crop). Mets "cover" si tu veux remplir quitte à rogner */
+  object-position: center;
+  display: block;
+}
+#backgroundSection{
+  /* Chemin corrigé : on remonte d’un niveau */
+  background-image: url('../asset/images/img_illustration.png');
+  background-repeat: no-repeat;
+  background-size: cover;      /* remplit tout l’espace */
+  background-position: center; /* centre l’image */
+  height: 300px;
+  width: 100%;
+}
+
+#detailUserVU{
+  background-color:white ;
+}
+
+.test{
+  color: red; /* test */
+  text-align: center;
+}
+
+* { outline: 2px dashed magenta !important; }  /* test visuel extrême */
