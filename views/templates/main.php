@@ -70,6 +70,20 @@
                 padding-top: 50px;
                 padding-bottom: 50px;
             }
+            .adminArticle .articleLine:nth-child(odd) {
+                background: #FFFFFF;
+            } /* lignes impairs */
+            .adminArticle .articleLine:nth-child(even) {
+                background: #EDF2F6;
+                color: black;
+            } /* lignes paires */
+            .adminArticle .articleLine:hover {
+                background: #FFFFAA;
+                color: black;
+            }
+            .adminArticle .articleLine span:hover {
+                color: black;
+            }
         </style>
     </head>
 
@@ -121,3 +135,4 @@ i.type = i.type === 'password' ? 'text' : 'password';
     </body>
 
 </html>
+

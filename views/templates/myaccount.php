@@ -46,7 +46,7 @@
             </form>
         </section>
         <section style="background-color:#FFFFFF"class="p-3 col-11 mb-3">
-            <table class="table">
+            <table class="table adminArticle">
                 <thead>
                     <tr class="texte-align-center">
                         <th class="text-center" scope="col">PHOTO</th>
@@ -60,7 +60,7 @@
                 <tbody>
                     <?php foreach ($livres as $livre):
                         ?>
-                        <tr>
+                        <tr class="articleLine">
                             <td style="width:100px;"><img src="<?= $livre->getCoverUrl(); ?>" alt="" srcset="" class="align-middle" style="width:100px;heigth:100px;"></td>
                             <td class="text-center align-middle"><?= $livre->getTitle(); ?></td>
                             <td class="text-center align-middle" style="heigth:350px;"><?= $livre->getAuthor(); ?></td>

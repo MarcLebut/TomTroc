@@ -67,9 +67,9 @@ try {
             $adminController->showUpdateArticleForm();
             break;
 
-        case 'updateArticle': 
+        case 'updateBook': 
             $adminController = new AdminController();
-            $adminController->updateArticle();
+            $adminController->updateBook();
             break;
 
         case 'deleteArticle':
