@@ -76,7 +76,10 @@ class AdminController
             Utils::redirect('home');
             exit;
         }
-        $userId = (int) $_SESSION['idUser'];
+        $ownerId = Utils::request('id');
+        $userId  = ($ownerId !== null && $ownerId !== '') ? (int) $ownerId : (int) ($_SESSION['idUser'] ?? 0);
+
+        
       
         $userManager  = new UserManager();
         $booksManager = new LivreManager();
