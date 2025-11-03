@@ -24,9 +24,10 @@
         foreach ($livres as $livre):
           ?>
           
+          
           <div class="card card-illu d-flex flex-column text-center mb-3" style="width:12rem; height:18rem;">
             <!-- Image -->
-            <a href="index.php?action=detailbook&id=<?= $livre->getId() ?>">
+            <a href="index.php?action=account&id=<?= $livre->getIdOwner() ?>">
               <div
                 class="ratio ratio-1x1 flex-grow-1">
 

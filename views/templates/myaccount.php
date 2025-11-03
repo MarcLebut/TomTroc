@@ -14,7 +14,7 @@
                     <?= htmlspecialchars($inscritDepuis, ENT_QUOTES, 'UTF-8'); ?>
                 </span>
                 
-                <span>Biblioteque</span>
+                <span>Bibliotèque</span>
                 <span>
                     <?= $nbLivres; ?>
                     livres</span>
@@ -24,21 +24,22 @@
 
         </section>
         <section class="col-5 mb-4 p-5  rounded-1 " style="background-color:#FFFFFF">
-            <form>
+            
+            <form action="index.php?updateProfil" method="post">
                 <fieldset enable>
                     <legend>Vos information personelles</legend>
                     <div class="mb-3">
                         <label for="email" class="form-label">Adresse email</label>
-                        <input type="email" id="email" class="form-control" placeholder="<?=$user->getEmail()?>">
+                        <input type="email" id="email" class="form-control" value="<?=$user->getEmail()?>">
                     </div>
                     <div class="mb-3  ">
                         <label for="password" class="form-label">Mot de passe</label>
-                        <input type="texte" id="password" class="form-control" placeholder="•••••••••••••">
+                        <input type="texte" id="password" class="form-control" value="•••••••••••••">
                         
                     </div>
                     <div class="mb-3">
                         <label for="pseudo" class="form-label">pseudo</label>
-                        <input type="text" id="pseudo" class="form-control" placeholder="<?=$user->getDisplayName()?>">
+                        <input type="text" id="pseudo" class="form-control" value="<?=$user->getDisplayName()?>">
                     </div>
 
                     <button type="submit" class="btn btn-success p-3">Enregistrer</button>

@@ -71,34 +71,43 @@ class AdminController
     }
     
     public function showAccount(): void
-{
-    if (empty($_SESSION['idUser'])) {
-        Utils::redirect('home');
-        exit;
+    {
+        if (empty($_SESSION['idUser'])) {
+            Utils::redirect('home');
+            exit;
+        }
+        $userId = (int) $_SESSION['idUser'];
+      
+        $userManager  = new UserManager();
+        $booksManager = new LivreManager();
+
+        $user      = $userManager->getUserById($userId);
+        $livres    = $booksManager->getBooksByOwnerId($userId);
+        $countBook = $booksManager->countBooksByOwner($userId);
+        
+        $inscritDepuis = Utils::formatSince($user->getCreatedAt());
+        $createdAtFr   = Utils::convertDateToFrenchFormat($user->getCreatedAt());
+
+        if ((!isset($_GET['id']) && empty($_GET['id']))) {
+            $view = new View('Mon compte');
+            $view->render('myaccount', [
+                'user'          => $user,
+                'inscritDepuis' => $inscritDepuis,
+                'createdAtFr'   => $createdAtFr,
+                'livres'        => $livres,
+                'nbLivres'      => $countBook,
+            ]);
+        }else{
+            $view = new View('compte user');
+            $view->render('account', [
+                'user'          => $user,
+                'inscritDepuis' => $inscritDepuis,
+                'createdAtFr'   => $createdAtFr,
+                'livres'        => $livres,
+                'nbLivres'      => $countBook,
+            ]);
+        }
     }
-
-    $userId = (int) $_SESSION['idUser'];
-
-    $userManager  = new UserManager();
-    $booksManager = new LivreManager();
-
-    $user      = $userManager->getUserById($userId);
-    $livres    = $booksManager->getBooksByOwnerId($userId);
-    $countBook = $booksManager->countBooksByOwner($userId);
-
-    // ✅ prépare des chaînes prêtes à afficher (pas d’objets)
-    $inscritDepuis = Utils::formatSince($user->getCreatedAt());
-    $createdAtFr   = Utils::convertDateToFrenchFormat($user->getCreatedAt());
-
-    $view = new View('Mon compte');
-    $view->render('myaccount', [
-        'user'          => $user,
-        'inscritDepuis' => $inscritDepuis,
-        'createdAtFr'   => $createdAtFr,
-        'livres'        => $livres,
-        'nbLivres'      => $countBook,
-    ]);
-}
 
     /**
      * Déconnexion de l'utilisateur.
@@ -112,4 +121,29 @@ class AdminController
         // On redirige vers la page d'accueil.
         Utils::redirect("home");
     }
+
+    /**
+     * Modifie le profil.
+     * @param User $UserId : le compte à modifier .
+     * @return void
+     *//*
+    public function updateProfil(User $userId): void
+    {
+        checkIfUserIsConnected()
+
+        $UserId 
+        $sql = "UPDATE users SET email = :email, password_hash = :password_hash, date_update = NOW() WHERE id = :id";
+        $this->db->query($sql, [
+            'email' => $user->getEmail(),
+            'password_hash' => $user->getPasswordHash(),
+            'id' => $user->getUserById()
+        ]);
+    }*/
+
+ /*
+ * Met à jour le profil d'un utilisateur.
+ * Si $newPlainPassword est null/vidé, le mot de passe n'est pas modifié.
+ */
+
+
 }

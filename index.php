@@ -90,6 +90,16 @@ try {
             $adminController->showAccount();
             break;
 
+        case 'account':
+            $adminController = new AdminController();
+            $adminController->showAccount();
+            break;
+
+
+        case 'updateProfil':
+            $adminController = new AdminController();
+            $adminController->updateProfil();
+            break;
         default:
         throw new Exception("La page demandée n'existe pas.");
     }

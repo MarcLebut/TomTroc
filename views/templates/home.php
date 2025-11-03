@@ -42,9 +42,7 @@
                 <?php foreach ($livres as $livre): ?>
                     <div class="card card-illu d-flex flex-column text-center" style="width:12rem; height:18rem;">
                         <a href="index.php?action=detailbook&id=<?= $livre->getId() ?>">
-                            <div
-                                class="ratio ratio-1x1 flex-grow-1">
-
+                            <div class="ratio ratio-1x1 flex-grow-1">                   
                                 <?php
                                 $cover = $livre->getCoverUrl();
                                 ?>

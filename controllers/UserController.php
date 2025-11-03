@@ -1,7 +1,7 @@
 <?php
 class UserController
 {
- public function addUser(): void
+    public function addUser(): void
 {
     // 1) Exiger POST (optionnel mais recommandé)
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -42,8 +42,17 @@ class UserController
     ]);
 
     Utils::redirect('connectionForm');
-}
+    }
 
+    public function updateProfil()
+    {
+       $id =  Utils::request('id');
 
+        $userManager = new UserManager();
+        $user = $userManager->getUserById($id);
+        $user->$userManager->update();
+
+        Utils::redirect('allbooks');
+    }
 
 }
