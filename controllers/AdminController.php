@@ -33,6 +33,24 @@ class AdminController
         $view->render("loginForm");
     }
 
+    /**
+     * Affichage du formulaire de mise a jours d'un livre'.
+     * @return void
+     */
+    public function updateBook(): void
+    {
+        /*$this->checkIfUserIsConnected();*/
+
+        $id = Utils::request('id');
+        $livreManager = new LivreManager();
+        $livre = $livreManager->getBookById($id);
+
+
+        $view = new View("Update Livre");
+        $view->render("updateBook",[
+            'livre' => $livre,
+        ]);
+    }
 
     /**
      * Connexion de l'utilisateur.
@@ -79,8 +97,6 @@ class AdminController
         $ownerId = Utils::request('id');
         $userId  = ($ownerId !== null && $ownerId !== '') ? (int) $ownerId : (int) ($_SESSION['idUser'] ?? 0);
 
-        
-      
         $userManager  = new UserManager();
         $booksManager = new LivreManager();
 
@@ -91,9 +107,9 @@ class AdminController
         $inscritDepuis = Utils::formatSince($user->getCreatedAt());
         $createdAtFr   = Utils::convertDateToFrenchFormat($user->getCreatedAt());
 
-        if ((!isset($_GET['id']) && empty($_GET['id']))) {
-            $view = new View('Mon compte');
-            $view->render('myaccount', [
+        if ((isset($_GET['id']) && !empty($_GET['id']))) {
+            $view = new View('compte utilisateur');
+            $view->render('account', [
                 'user'          => $user,
                 'inscritDepuis' => $inscritDepuis,
                 'createdAtFr'   => $createdAtFr,
@@ -101,8 +117,8 @@ class AdminController
                 'nbLivres'      => $countBook,
             ]);
         }else{
-            $view = new View('compte user');
-            $view->render('account', [
+            $view = new View('mon compte');
+            $view->render('myaccount', [
                 'user'          => $user,
                 'inscritDepuis' => $inscritDepuis,
                 'createdAtFr'   => $createdAtFr,
@@ -124,29 +140,5 @@ class AdminController
         // On redirige vers la page d'accueil.
         Utils::redirect("home");
     }
-
-    /**
-     * Modifie le profil.
-     * @param User $UserId : le compte à modifier .
-     * @return void
-     *//*
-    public function updateProfil(User $userId): void
-    {
-        checkIfUserIsConnected()
-
-        $UserId 
-        $sql = "UPDATE users SET email = :email, password_hash = :password_hash, date_update = NOW() WHERE id = :id";
-        $this->db->query($sql, [
-            'email' => $user->getEmail(),
-            'password_hash' => $user->getPasswordHash(),
-            'id' => $user->getUserById()
-        ]);
-    }*/
-
- /*
- * Met à jour le profil d'un utilisateur.
- * Si $newPlainPassword est null/vidé, le mot de passe n'est pas modifié.
- */
-
 
 }

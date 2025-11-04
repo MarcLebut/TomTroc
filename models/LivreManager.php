@@ -90,13 +90,14 @@ class LivreManager extends AbstractEntityManager
      * @param livre $livre : l'livre à modifier.
      * @return void
      */
-    public function updatelivre(Livre $livre): void
+    public function updateLivre(Livre $livre): void
     {
-        $sql = "UPDATE books SET title = :title, description = :description, date_update = NOW() WHERE id = :id";
+        $sql = "UPDATE books SET title = :title, description = :description, status = :status, updated_at = NOW() WHERE id = :id";
         $this->db->query($sql, [
-            'title' => $livre->getTitle(),
+            'title'       => $livre->getTitle(),
             'description' => $livre->getDescription(),
-            'id' => $livre->getId()
+            'status'      => $livre->getStatus(),
+            'id'          => $livre->getId()
         ]);
     }
 

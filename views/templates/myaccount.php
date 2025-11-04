@@ -62,11 +62,15 @@
                     <?php foreach ($livres as $livre):
                         ?>
                         <tr class="articleLine">
-                            <td style="width:100px;"><img src="<?= $livre->getCoverUrl(); ?>" alt="" srcset="" class="align-middle" style="width:100px;heigth:100px;"></td>
+                            <td class="align-midle" style="width:100px;"> 
+                                <a href="index.php?action=updateBook&id=<?= $livre->getId() ?>"> 
+                                    <img src="<?= $livre->getCoverUrl(); ?>" alt="" srcset="" class="align-middle" style="width:100px;heigth:100px;">
+                                </a>
+                            </td>
                             <td class="text-center align-middle"><?= $livre->getTitle(); ?></td>
                             <td class="text-center align-middle" style="heigth:350px;"><?= $livre->getAuthor(); ?></td>
-                            <td class="text-center align-middle">
-                                <span>description</span>
+                            <td class="text-center align-middle" style="width:600px;">
+                                <span ><?= $livre->getDescription() ?></span>
                             </td>
                             <td
                                 class="text-center align-middle">

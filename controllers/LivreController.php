@@ -43,4 +43,26 @@ public function showBook(): void
         'livre' => $livre,
     ]);
 }
+
+public function updateBookbtn():void{
+    $id          = (int) (Utils::request('id') ?? 0);
+    $title       = trim((string) (Utils::request('title') ?? ''));
+    $description = trim((string) (Utils::request('description') ?? ''));
+    $status      = trim((string) (Utils::request('status') ?? ''));
+    
+    $livreManager = new LivreManager();
+    $livre = $livreManager->getBookById($id);
+
+    // Mets à jour l'objet puis enregistre
+    $livre->setTitle($title);
+    $livre->setDescription($description);
+    $livre->setStatus($status);
+
+
+    $livreManager->updateLivre($livre);
+
+    // Redirige vers la page détail (ou autre)
+    Utils::redirect('updateBook', ['id' => $id]);
+
+}
 }

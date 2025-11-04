@@ -71,7 +71,10 @@ try {
             $adminController = new AdminController();
             $adminController->updateBook();
             break;
-
+        case 'updateBookBtn': 
+            $adminController = new LivreController();
+            $adminController->updateBookBtn();
+            break;
         case 'deleteArticle':
             $adminController = new AdminController();
             $adminController->deleteArticle();

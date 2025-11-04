@@ -25,7 +25,7 @@
           ?>
           
           
-          <div class="card card-illu d-flex flex-column text-center mb-3" style="width:12rem; height:18rem;">
+          <div class="card card-illu d-flex flex-column text-start mb-3" style="width:12rem; height:19rem;">
             <!-- Image -->
             <a href="index.php?action=account&id=<?= $livre->getIdOwner() ?>">
               <div
@@ -40,10 +40,10 @@
             </a>
 
             <!-- Texte -->
-            <div class="card-body mt-auto p-2" style="width:12rem; height:8rem;">
-              <h5 class="card-title mb-1"><?= htmlspecialchars($livre->getTitle(), ENT_QUOTES, 'UTF-8') ?></h5>
+            <div class="card-body mt-auto p-2" style="width:12rem; height:9rem;">
+              <span class="card-title mb-1"><?= htmlspecialchars($livre->getTitle(), ENT_QUOTES, 'UTF-8') ?></span>
               <p class="card-text mb-0"><?= htmlspecialchars($livre->getAuthor() ?? 'Auteur inconnu', ENT_QUOTES, 'UTF-8') ?></p>
-
+              <br>
               <p class="mb-0">Propriétaire :
                 <?= htmlspecialchars($livre->getOwner()?->getDisplayName() ?? 'Inconnu', ENT_QUOTES, 'UTF-8') ?>
               </p>
