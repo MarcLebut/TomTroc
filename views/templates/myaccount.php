@@ -62,10 +62,8 @@
                     <?php foreach ($livres as $livre):
                         ?>
                         <tr class="articleLine">
-                            <td class="align-midle" style="width:100px;"> 
-                                <a href="index.php?action=updateBook&id=<?= $livre->getId() ?>"> 
-                                    <img src="<?= $livre->getCoverUrl(); ?>" alt="" srcset="" class="align-middle" style="width:100px;heigth:100px;">
-                                </a>
+                            <td class="align-midle" style="width:100px;">   
+                                <img src="<?= $livre->getCoverUrl(); ?>" alt="" srcset="" class="align-middle" style="width:100px;heigth:100px;">
                             </td>
                             <td class="text-center align-middle"><?= $livre->getTitle(); ?></td>
                             <td class="text-center align-middle" style="heigth:350px;"><?= $livre->getAuthor(); ?></td>
@@ -80,11 +78,12 @@
                                 </span>
                             </td>
                             <td class="text-center align-middle">
-                                <a href="" class="me-3">
-                                    <span>éditer</span>
+                                
+                                <a href="index.php?action=updateBook&id=<?= $livre->getId() ?>">
+                                    <span style="color:red;">Editer</span>
                                 </a>
-                                <a href="">
-                                    <span style="color:red;">Supprimer</span>
+                                <a href="" class="ms-3">
+                                    <span>Supprimer</span>
                                 </a>
                             </td>
                         </tr>
